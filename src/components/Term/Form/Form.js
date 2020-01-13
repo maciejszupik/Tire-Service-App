@@ -12,30 +12,8 @@ const animatedComponents = makeAnimated();
 const arr = [];
 let price = 0;
 
-//--------------------------------------------------------
-class Example extends Component {
-  state = {
-    startDate: new Date()
-  };
 
-  handleChange = date => {
-    this.setState({
-      startDate: date
-    });
-    arr[2] = date.getDate();
-    arr[3] = date.getMonth() + 1;
-    arr[4] = date.getFullYear();
-  };
 
-  render() {
-    return (
-      <DatePicker
-        selected={this.state.startDate}
-        onChange={this.handleChange}
-      />
-    );
-  }
-}
 //--------------------------------------------------------
 
 class Form extends Component {
@@ -113,7 +91,7 @@ class Form extends Component {
           value={this.selectedOption3}
         />
         <p>wybierz date</p>
-        <Example />
+        
         <button onClick={this.handleOnClickButton}>SUBMIT</button>
         {isTrue?(<Ready service={arr} price={price}/>): 'wypelnij dane'}
         
