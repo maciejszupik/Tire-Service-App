@@ -1,0 +1,19 @@
+{
+    "menu": [
+        {
+            "id": 1,
+            "name": "Strona Główna",
+            "link": "/"
+        },
+        {
+            "id": 1,
+            "name": "Galeria",
+            "link": "/gallery"
+        },
+        {
+            "id": 1,
+            "name": "Kontakt",
+            "link": "/contact"
+        }
+    ]
+}
