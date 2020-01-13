@@ -6,7 +6,7 @@ class Home extends Component {
         return({
             width: '80%',
             margin: '0 auto',
-            minHeight: 560,                  
+            minHeight: '60vh',                  
         })
     }
         
@@ -14,7 +14,7 @@ class Home extends Component {
     render() {
         return (
             <div style={this.styles}>
-                <img class='mainImage' src={image1} />
+                <img class='mainImage' src={image1} alt='img1'/>
             </div>
         );
     }

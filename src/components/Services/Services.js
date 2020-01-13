@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { findByLabelText } from "@testing-library/react";
 import image2 from "./2.jpg";
 import Popup from "reactjs-popup";
 import { NavLink } from "react-router-dom";
@@ -9,14 +8,14 @@ class Home extends Component {
     return {
       width: "80%",
       margin: "0 auto",
-      minHeight: 500,
+      minHeight: '50vh',
       display: "flex"
     };
   }
   render() {
     return (
       <div style={this.styles}>
-        <div class="servicesLeft">
+        <div className="servicesLeft">
           <h1>OUR SERVICES</h1>
           <h2>TIRES SWAP</h2>
           <h2>WHEELS SWAP</h2>
@@ -25,21 +24,34 @@ class Home extends Component {
             <div class="popUpMenu">
               <h3>TIRE SWAP</h3>
               <ul>
-                <li>15 -> 140 PLN</li>
-                <li>16 -> 160 PLN</li>
-                <li>17 -> 170 PLN</li>
-                <li>18 -> 180 PLN</li>
-                <li>19 -> 190 PLN</li>
-                <li>20 -> 200 PLN</li>
+              <li>15 inch -> 140 PLN</li>
+                <li>16 inch -> 160 PLN</li>
+                <li>17 inch -> 170 PLN</li>
+                <li>18 inch -> 180 PLN</li>
+                <li>19 inch -> 190 PLN</li>
+                <li>20 inch -> 200 PLN</li>
               </ul>
               <h3>WHEELS SWAP</h3>
               <ul>
-                <li>15 -> 100 PLN</li>
-                <li>16 -> 120 PLN</li>
-                <li>17 -> 130 PLN</li>
-                <li>18 -> 140 PLN</li>
-                <li>19 -> 150 PLN</li>
-                <li>20 -> 160 PLN</li>
+                <li>15 inch -> 100 PLN</li>
+                <li>16 inch -> 120 PLN</li>
+                <li>17 inch -> 130 PLN</li>
+                <li>18 inch -> 140 PLN</li>
+                <li>19 inch -> 150 PLN</li>
+                <li>20 inch -> 160 PLN</li>
+              </ul>
+            </div>
+          </Popup>
+          <Popup trigger={<button>PRICES</button>} position="bottom center">
+            <div class="popUpMenu">
+              <h3>TIRE SWAP</h3>
+              <ul>
+                <li>15 inch -> 140 PLN</li>
+                <li>16 inch -> 160 PLN</li>
+                <li>17 inch -> 170 PLN</li>
+                <li>18 inch -> 180 PLN</li>
+                <li>19 inch -> 190 PLN</li>
+                <li>20 inch -> 200 PLN</li>
               </ul>
             </div>
           </Popup>
@@ -47,8 +59,8 @@ class Home extends Component {
             <button>SET AN APPOINTMENT</button>
           </NavLink>
         </div>
-        <div class="servicesRight">
-          <img src={image2} />
+        <div className="servicesRight">
+          <img src={image2} alt="img2" />
         </div>
       </div>
     );
