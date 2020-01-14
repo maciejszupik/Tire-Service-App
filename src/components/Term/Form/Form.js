@@ -1,101 +1,64 @@
 import React, { Component } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import Ready from './Ready'
+// import Ready from './Ready'
 
 import Select from "react-select";
-import { options1, options2, options3 } from "./data/data";
 
-import makeAnimated from "react-select/animated";
-const animatedComponents = makeAnimated();
+import { options1, options2} from "./data/data";
 
-const arr = [];
-let price = 0;
-
-
-
-//--------------------------------------------------------
 
 class Form extends Component {
   state = {
-    selectedOption1: null,
+    selectedOption: null,
     selectedOption2: null,
-    isTrue: false,
-    selectedOption3: [],
-    message: "",
-    runFlat: false,
-    hotel: false
+    price: 0,
+    message: ''
+  };
+  
+  handleChange = selectedOption => {
+    this.setState(
+      { selectedOption },
+      () => console.log(`Option selected:`, this.state.selectedOption)
+    );
+  };
+  handleChange2 = selectedOption2 => {
+    this.setState(
+      { selectedOption2 },
+      () => console.log(`Option selected:`, this.state.selectedOption2)
+    );
   };
 
-  handleOnChange1 = selectedOption1 => {
-    this.setState({ selectedOption1 }, () => {
-      arr[0] = this.state.selectedOption1.value; 
-    });
-  };
-  handleOnChange2 = selectedOption2 => {
-      this.setState({ selectedOption2 }, () => {
-        arr[1] = this.state.selectedOption2.value;   
-    });
-  };
-  handleOnChange3 = val => {
-    this.setState(state => {
-      state.selectedOption3 = val;
-     // console.log(val)
-      return state;
-    });
-  };
-
-  handleOnClickButton = e => {
+  handleOnClick = (e) => {
     e.preventDefault();
-    if(this.state.selectedOption1 != null && this.state.selectedOption2 != null){
-    price += this.state.selectedOption2.price;
-    price += this.state.selectedOption1.price;
+    this.state.price += this.state.selectedOption.price;
+    this.state.price += this.state.selectedOption2.price;
     this.setState(prevState => ({
-        isTrue: true
-      }));
-    }    
-
+      message: `wybór1 + ${this.state.selectedOption.value} // 
+      wybór2 + ${this.state.selectedOption2.value} // cena ${this.state.price}`
+      
+    }))
     
-  };
-
+  }
   render() {
-    const {
-      selectedOption1,
-      selectedOption2,
-      isTrue,
-      selectedOption3,
-      message
-    } = this.state;
+    const { selectedOption, selectedOption2 } = this.state;
 
     return (
-      <form>
-        koła / opony
-        <Select
-          value={selectedOption1}
-          options={options1}
-          onChange={this.handleOnChange1}
-        />
-        rozmiar
-        <Select
-          value={selectedOption2}
-          options={options2}
-          onChange={this.handleOnChange2}
-        />
-        Dodatkowe usługi
-        <Select
-          closeMenuOnSelect={false}
-          components={animatedComponents}
-          isMulti
-          options={options3}
-          onChange={this.handleOnChange3}
-          value={this.selectedOption3}
-        />
-        <p>wybierz date</p>
-        
-        <button onClick={this.handleOnClickButton}>SUBMIT</button>
-        {isTrue?(<Ready service={arr} price={price}/>): 'wypelnij dane'}
-        
-      </form>
+      <>
+      <h2>DO YOU WANT TO CHANGE WHOLE WHEELS OR JUST TIRES?</h2>
+      <Select
+        value={selectedOption}
+        onChange={this.handleChange}
+        options={options1}
+      />
+      <h2>ENTER THE RIM SIZE IN INCHES</h2>
+      <Select
+        value={selectedOption2}
+        onChange={this.handleChange2}
+        options={options2}
+      />
+      <h2>CHOOSE EXTRA SERVICES</h2>
+              <button onClick={this.handleOnClick}>BUTTON</button>
+              <h1>{this.state.message}</h1>
+      </>
     );
   }
 }
