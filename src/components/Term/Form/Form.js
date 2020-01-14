@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-
-// import Ready from './Ready'
-
 import Select from "react-select";
-
 import { options1, options2 } from "./data/data";
+import DatePicker from './DatePicker'
 
 class Form extends Component {
   state = {
@@ -16,8 +13,10 @@ class Form extends Component {
     sensors: 0,
     bags: 0,
     message: "",
-    showDateForm: false
+    showDateForm: false,
+    selectedDate: ''
   };
+
 
   handleChange = selectedOption => {
     this.setState({ selectedOption }, () =>
@@ -77,6 +76,11 @@ class Form extends Component {
     }));
     console.log(this.state.price);
   };
+  handleDateChange =({target}) =>{
+    console.log(this.state.selectedDate)
+    this.setState({selectedDate: target.value})
+  }
+  
   onClickDate = e => {
     e.preventDefault()
     this.setState(prevState=>({
@@ -85,7 +89,6 @@ class Form extends Component {
   }
   render() {
     const { selectedOption, selectedOption2, showDateForm } = this.state;
-
     return (
       <form className="appointment">
         <h2>DO YOU WANT TO CHANGE WHOLE WHEELS OR JUST TIRES?</h2>
@@ -114,10 +117,13 @@ class Form extends Component {
         </div>
         <h3>{this.state.message}</h3>
         <h3>{(this.state.message.length > 16)? <button className="primaryButton" onClick={this.onClickDate}>SELECT DATE</button>: ''}</h3>
-        {showDateForm? <div>AAAAAAA</div>: ''}
+        {showDateForm? <DatePicker selectedDate={this.state.selectedDate}/>: ''}
+        
+        
       </form>
     );
   }
 }
 
 export default Form;
+
