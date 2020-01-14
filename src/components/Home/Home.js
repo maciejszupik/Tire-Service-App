@@ -14,7 +14,7 @@ class Home extends Component {
     render() {
         return (
             <div style={this.styles}>
-                <img class='mainImage' src={image1} alt='img1'/>
+                <img className='mainImage' src={image1} alt='img1'/>
             </div>
         );
     }
