@@ -19,6 +19,7 @@ code {
 }
 .mainLinks {
   text-decoration: none;
+  font-weight: bold;
 
   &:visited {
     text-decoration: none;
@@ -151,3 +152,13 @@ code {
 }
 
 //=---------------FORM-----------------------
+//---------------READY------------------------
+.appointmentInfo{
+  margin-top: 5vh;
+  padding-left: 10vh;
+  display:flex;
+  flex-direction: column;
+  color: white;  
+    
+  }
+ 

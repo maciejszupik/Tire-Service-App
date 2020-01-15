@@ -1,19 +1,16 @@
 {
-    "menu": [
+    "term": [
         {
             "id": 1,
-            "name": "Strona Główna",
-            "link": "/"
+            "price": "aaa",
+            "data": "bbb",
+            "service": "ccc"
         },
         {
             "id": 1,
-            "name": "Galeria",
-            "link": "/gallery"
-        },
-        {
-            "id": 1,
-            "name": "Kontakt",
-            "link": "/contact"
+            "price": "aaa1",
+            "data": "bbb2",
+            "service": "ccc3"
         }
     ]
 }

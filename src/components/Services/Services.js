@@ -21,7 +21,7 @@ class Home extends Component {
           <h2>WHEELS SWAP</h2>
           <h2>TIRE STORAGE FOR SEASON</h2>
           <Popup trigger={<button>PRICES</button>} position="bottom center">
-            <div class="popUpMenu">
+            <div className="popUpMenu">
               <h3>TIRE SWAP</h3>
               <ul>
               <li>15 inch -> 140 PLN</li>
@@ -43,7 +43,7 @@ class Home extends Component {
             </div>
           </Popup>
           <Popup trigger={<button>EXTRA SERVICES</button>} position="bottom center">
-            <div class="popUpMenu">
+            <div className="popUpMenu">
               <ul>
                 <li>TIRE STORAGE FOR SEASON -> 100 PLN</li>
                 <li>RUNFLAT TIRE -> 40 PLN</li>

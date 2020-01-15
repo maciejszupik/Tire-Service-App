@@ -17,7 +17,8 @@ class Form extends Component {
     message: "",
     showDateForm: false,
     selectedDate: "",
-    summaryWindow: false
+    summaryWindow: false,
+    date: ''
   };
 
   handleChange = selectedOption => {
@@ -86,18 +87,18 @@ class Form extends Component {
       showDateForm: true
     });
   };
-  handleDateChange = () => {
+  handleOnValueChange = (val) => {
     this.setState({
-      selectedDate: this.state.selectedDate
-    });
-  };
+      date: val
+    })
+  }
   setAppointment = () => {
     this.setState({
       summaryWindow: true
     });
-  };
+    };
   render() {
-    const { selectedOption, selectedOption2, showDateForm } = this.state;
+    const { selectedOption, selectedOption2, showDateForm, date } = this.state;
     return (
       <form className="appointment">
         <h2>DO YOU WANT TO CHANGE WHOLE WHEELS OR JUST TIRES?</h2>
@@ -136,20 +137,24 @@ class Form extends Component {
         </h3>
         {showDateForm ? (
           <h3>
-            <DatePicker handleDateChange={this.handleDateChange} />
-            <button className="primaryButton" onClick={this.setAppointment}>
-              SET AN APPOINTMENT
-            </button>
+            <DatePicker onValueChange={this.handleOnValueChange} />
           </h3>
         ) : (
           ""
         )}
+        {date? (
+          <h3>
+        <button className="primaryButton" onClick={this.setAppointment}>
+        SET AN APPOINTMENT
+        </button>
+        </h3>): ""}
         {this.state.summaryWindow ? (
           <Ready
             price={this.state.price}
             extraPrice={this.state.extraPrice}
             selectedOption={selectedOption}
             selectedOption2={selectedOption2}
+            date={date}
           />
         ) : (
           ""
