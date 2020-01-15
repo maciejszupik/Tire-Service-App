@@ -1,22 +1,24 @@
 import React, { Component } from "react";
 import Select from "react-select";
 import { options1, options2 } from "./data/data";
-import DatePicker from './DatePicker'
+import DatePicker from "./DatePicker";
+import Ready from "./Ready";
 
 class Form extends Component {
   state = {
     selectedOption: null,
     selectedOption2: null,
     price: 0,
+    extraPrice: 0,
     tireStorage: 0,
     runFlat: 0,
     sensors: 0,
     bags: 0,
     message: "",
     showDateForm: false,
-    selectedDate: ''
+    selectedDate: "",
+    summaryWindow: false
   };
-
 
   handleChange = selectedOption => {
     this.setState({ selectedOption }, () =>
@@ -32,61 +34,68 @@ class Form extends Component {
   handleOnClick = e => {
     e.preventDefault();
     if (this.state.selectedOption && this.state.selectedOption2) {
-      this.setState(prevState => ({
+      this.setState({
         price: (this.state.price +=
           this.state.selectedOption.price + this.state.selectedOption2.price),
+        extraPrice:
+          this.state.tireStorage +
+          this.state.runFlat +
+          this.state.sensors +
+          this.state.bags,
         message: `CHANGE OF ${this.state.selectedOption2.value} INCH ${
           this.state.selectedOption.value
         }, PRICE: ${this.state.price} EXTRA SERVICES: ${this.state.tireStorage +
           this.state.runFlat +
           this.state.sensors +
           this.state.bags}`
-      }));
+      });
     } else {
-      this.setState(prevState => ({
+      this.setState({
         message: "INCOMPLETE DATA"
-      }));
+      });
     }
   };
   handleClick2 = e => {
     e.preventDefault();
-    this.setState(prevState => ({
+    this.setState({
       tireStorage: 100
-    }));
-    console.log(this.state.price);
+    });
   };
   handleClick3 = e => {
     e.preventDefault();
-    this.setState(prevState => ({
+    this.setState({
       runFlat: 40
-    }));
-    console.log(this.state.price);
+    });
   };
   handleClick4 = e => {
     e.preventDefault();
-    this.setState(prevState => ({
+    this.setState({
       sensors: 50
-    }));
-    console.log(this.state.price);
+    });
   };
   handleClick5 = e => {
     e.preventDefault();
-    this.setState(prevState => ({
+    this.setState({
       bags: 10
-    }));
-    console.log(this.state.price);
+    });
   };
-  handleDateChange =({target}) =>{
-    console.log(this.state.selectedDate)
-    this.setState({selectedDate: target.value})
-  }
-  
+
   onClickDate = e => {
-    e.preventDefault()
-    this.setState(prevState=>({
+    e.preventDefault();
+    this.setState({
       showDateForm: true
-    }))
-  }
+    });
+  };
+  handleDateChange = () => {
+    this.setState({
+      selectedDate: this.state.selectedDate
+    });
+  };
+  setAppointment = () => {
+    this.setState({
+      summaryWindow: true
+    });
+  };
   render() {
     const { selectedOption, selectedOption2, showDateForm } = this.state;
     return (
@@ -116,14 +125,38 @@ class Form extends Component {
           </button>
         </div>
         <h3>{this.state.message}</h3>
-        <h3>{(this.state.message.length > 16)? <button className="primaryButton" onClick={this.onClickDate}>SELECT DATE</button>: ''}</h3>
-        {showDateForm? <DatePicker selectedDate={this.state.selectedDate}/>: ''}
-        
-        
+        <h3>
+          {this.state.message.length > 16 ? (
+            <button className="primaryButton" onClick={this.onClickDate}>
+              SELECT DATE
+            </button>
+          ) : (
+            ""
+          )}
+        </h3>
+        {showDateForm ? (
+          <h3>
+            <DatePicker handleDateChange={this.handleDateChange} />
+            <button className="primaryButton" onClick={this.setAppointment}>
+              SET AN APPOINTMENT
+            </button>
+          </h3>
+        ) : (
+          ""
+        )}
+        {this.state.summaryWindow ? (
+          <Ready
+            price={this.state.price}
+            extraPrice={this.state.extraPrice}
+            selectedOption={selectedOption}
+            selectedOption2={selectedOption2}
+          />
+        ) : (
+          ""
+        )}
       </form>
     );
   }
 }
 
 export default Form;
-

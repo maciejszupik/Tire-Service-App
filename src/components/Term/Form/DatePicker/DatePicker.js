@@ -5,6 +5,7 @@ import React, { useState } from "react";
 
 const DatePicker = () => {
   const [selectedDate, handleDateChange] = useState(new Date());
+  
   return (
       <>
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -19,9 +20,11 @@ const DatePicker = () => {
         />
       </Grid>
     </MuiPickersUtilsProvider>
-    
     </>
   );
 };
 
 export default DatePicker;
+
+
+

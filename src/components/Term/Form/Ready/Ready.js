@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 class Ready extends Component {
   constructor(props) {
@@ -8,21 +9,26 @@ class Ready extends Component {
     return({
         width: '100%',
         margin: '0 auto',
-        minHeight: 860,
-        backgroundColor: 'red ',
+        height: '100vh',
+        backgroundColor: '#3f8aec',
         position: 'absolute',
         top: 0,
-        opacity: 0.7
+        opacity: 0.9
     })
 }
   render() {
-    const { service, price } = this.props;
+    const { price, extraPrice, selectedOption, selectedOption2 } = this.props;
     return (
       <div style={this.styles}>
-        <h2>
-          jesteś umówiony na {service[0]} rozmiar {service[1]} data:{" "}
-          {service[3]}.{service[4]}.{service[5]} cena: {price}
-        </h2>
+        <h1> YOUR APPOINTMENT INFO </h1>
+        <h2>RANGE OF SERVICES: CHANGE OF {selectedOption2.value} INCH {selectedOption.value}</h2>
+        <h2> CENA {price} </h2>
+        <h2>Usługi dodatkowe {extraPrice}</h2>
+        <h2>SUMMARY: {price + extraPrice}</h2>
+        <NavLink to="/#" className="mainLinks">
+            <button className='primaryButton'>MAIN PAGE</button>
+          </NavLink>
+        
       </div>
     );
   }
