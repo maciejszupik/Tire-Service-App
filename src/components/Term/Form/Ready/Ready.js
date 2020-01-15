@@ -1,26 +1,16 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+const MENU_URL = 'http://localhost:3001/term'
 
-const MENU_URL = 'http://localhost:3000'
+
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 class Ready extends Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
-    items: []
-  }
-
-  componentDidMount(){
-    fetch(MENU_URL)
-      .then(res => {
-        if (res.ok){
-          return res.json()
-        }
-        throw new Error('błąd')
-      })
-      .then(items => this.setState({items}))
+    price: this.props.price + this.props.extraPrice,
+    data: this.props.date,
+    service: this.props.selectedOption.value,
+    size: this.props.selectedOption2.value
   }
 
   get styles() {
@@ -32,8 +22,36 @@ class Ready extends Component {
       opacity: 0.9
     };
   }
+
+  componentDidMount(){
+    fetch(MENU_URL)
+      .then(res => {
+        if (res.ok){
+          return res.json()
+        }
+        throw new Error('błąd')
+      })
+      .then(items => this.setState({items}))
+}
+onClick = (e) =>{
+    const {price, data, service, size} = this.state
+    fetch('http://localhost:3001/term', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            price,
+            data,
+            service,
+            size
+        })
+    })
+  
+}
+
   render() {
-    const { price, extraPrice, selectedOption, selectedOption2, items, date } = this.props;
+    const { price, extraPrice, selectedOption, selectedOption2, date } = this.props;
     return (
       <div style={this.styles}>
         <div className="appointmentInfo">
@@ -47,11 +65,11 @@ class Ready extends Component {
           <h2>SUMMARY: {price + extraPrice} PLN</h2>
           <h2>DATE: {date.getDate()} {months[date.getMonth()]} {date.getFullYear()}</h2>
           <h2>HOUR: {date.getHours()<10? `0${date.getHours()}`: `${date.getHours()}` }:{date.getMinutes()<10? `0${date.getMinutes()}`: `${date.getMinutes()}`  }   </h2>
-
+              
           </div>
           <h3>
            <NavLink to="/#" className="mainLinks">
-            <button className="primaryButton">SET AN APPOINTMENT AND RETURN TO MENU</button>
+            <button className="primaryButton" onClick={this.onClick}>SET AN APPOINTMENT AND RETURN TO MENU</button>
           </NavLink>
           </h3>
           
