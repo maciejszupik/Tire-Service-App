@@ -2,7 +2,6 @@ import { MuiPickersUtilsProvider, DateTimePicker } from "@material-ui/pickers";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import React, { Component } from "react";
-import { render } from "react-dom";
 
 class DatePicker extends Component {
   state = {
