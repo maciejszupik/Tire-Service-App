@@ -1,3 +1,9 @@
+@import 'config/variables';
+
+.containerBox{
+  @include container();
+  display: flex;
+}
 .mainImage {
     width: 100%;
   }

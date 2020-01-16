@@ -5,9 +5,7 @@ class Contact extends Component {
     get styles(){
         return({
             width: '80%',
-            margin: '0 auto',
-            minHeight: 560,
-            
+            margin: '0 auto',  
         })
     }
     render() {

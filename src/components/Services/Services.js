@@ -4,17 +4,10 @@ import Popup from "reactjs-popup";
 import { NavLink } from "react-router-dom";
 
 class Home extends Component {
-  get styles() {
-    return {
-      width: "80%",
-      margin: "0 auto",
-      minHeight: '50vh',
-      display: "flex"
-    };
-  }
+  
   render() {
     return (
-      <div style={this.styles}>
+      <div className='containerBox'>
         <div className="servicesLeft">
           <h1>OUR SERVICES</h1>
           <h2>TIRES SWAP</h2>
