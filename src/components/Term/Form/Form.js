@@ -145,7 +145,7 @@ class Form extends Component {
         {date? (
           <h3>
         <button className="primaryButton" onClick={this.setAppointment}>
-        SET AN APPOINTMENT
+        NEXT
         </button>
         </h3>): ""}
         {this.state.summaryWindow ? (
