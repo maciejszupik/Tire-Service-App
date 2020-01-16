@@ -92,7 +92,8 @@ class Form extends Component {
       date: val
     })
   }
-  setAppointment = () => {
+  setAppointment = (e) => {
+    e.preventDefault()
     this.setState({
       summaryWindow: true
     });
