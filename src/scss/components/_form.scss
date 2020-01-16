@@ -1,0 +1,58 @@
+.appointment {
+    h3{
+      text-align: center;
+    }
+    .buttonBox {
+      display: flex;
+      justify-content: space-between;
+      
+      button {
+        width: 20%;
+        height: 10vh;
+        color: #fff !important;
+        text-transform: uppercase;
+        text-decoration: none;
+        background: #3f8aec;
+        padding: 20px;
+        border-radius: 5px;
+        display: inline-block;
+        border: none;
+        transition: all 0.4s ease 0s;
+      }
+      button:hover {
+        background: #434343;
+        letter-spacing: 1px;
+        -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+        -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+        box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+        transition: all 0.4s ease 0s;
+      }
+    }
+  }
+  .priceBox{
+    display: flex;
+    justify-content: center;
+    
+  }
+  .primaryButton {
+    margin-top: 5vh;
+    width: 50%;
+    height: 5vh;
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #50df2c;
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+  }
+  .primaryButton:hover {
+    background: #434343;
+    letter-spacing: 1px;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+    transition: all 0.4s ease 0s;
+  }
