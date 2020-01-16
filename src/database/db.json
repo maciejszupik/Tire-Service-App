@@ -13,6 +13,13 @@
       "service": "WHEELS",
       "size": "16",
       "id": 2
+    },
+    {
+      "price": 210,
+      "data": "2020-01-17T19:31:00.000Z",
+      "service": "TIRES",
+      "size": "17",
+      "id": 3
     }
   ]
 }
