@@ -25,10 +25,16 @@ please open powershell command line as an Administrator and type:
 "set-executionpolicy remotesigned"
 
 <br>
-### Components used:
+### `Components used:`
 <ul>
   <li>
 https://material-ui.com/
+  </li>
+  <li>
+https://github.com/JedWatson/react-select
+  </li>
+  <li>
+https://material-ui-pickers.dev/
   </li>
   
 </ul>
