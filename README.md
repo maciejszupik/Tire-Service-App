@@ -25,7 +25,7 @@ please open powershell command line as an Administrator and type:
 "set-executionpolicy remotesigned"
 
 <br>
-### `Components used`
+COMPONENTS USED
 <ul>
   <li>
 https://material-ui.com/
