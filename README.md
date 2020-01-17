@@ -16,9 +16,9 @@ App require json server
 ### `npm install -g json-server`
 ### `json-server --watch -p 3001  src/database/db.json`
 
-Possible problem: 
+Possible problem: <br>
 "json-server : File C:\Users\macie\AppData\Roaming\npm\json-server.ps1 cannot be loaded because running scripts is disabled on this  
-system."
+system."<br>
 If you have such problem with starting json server,
 please open powershell command line as an Administrator and type:
 
