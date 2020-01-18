@@ -1,33 +1,35 @@
-import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import React, {Component} from 'react';
+import {render} from 'react-dom';
+import MapGL from 'react-map-gl';
 
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const MAPBOX_TOKEN = 'pk.eyJ1IjoibWFjaWVqc3p1cGlrIiwiYSI6ImNrNWptN25hazA0Z2Uza3FpanJqb3FlYjAifQ.zvWmbIeLZpsJLrKXiwlWFw'; // Set your mapbox token here
 
 class Map extends Component {
-    static defaultProps = {
-    center: {
-      lat: 50.06,
-      lng: 19.93
-    },
-    zoom: 11
-  };
-    render() {
-        return (
-            <div style={{ height: '60vh', width: '100%' }}>
-        <GoogleMapReact
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-        >
-          <AnyReactComponent
-            lat={50.061613}
-            lng={50.061613}
-            text="My Marker"
-          />
-        </GoogleMapReact>
-      </div>
-        );
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewport: {
+        latitude: 50.06,
+        longitude: 19.93,
+        zoom: 14,
+        bearing: 0,
+        pitch: 0
+      }
+    };
+  }
+
+  render() {
+    return (
+      <MapGL
+        {...this.state.viewport}
+        width="80vw"
+        height="60vh"
+        mapStyle="mapbox://styles/mapbox/dark-v9"
+        onViewportChange={viewport => this.setState({viewport})}
+        mapboxApiAccessToken={MAPBOX_TOKEN}
+      />
+    );
+  }
 }
 
-export default Map;
+export default Map
