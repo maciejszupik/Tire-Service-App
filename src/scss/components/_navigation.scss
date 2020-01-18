@@ -1,20 +1,28 @@
-@import 'config/variables';
+@import "config/variables";
 
+.naviStyle {
+  min-height: 100px;
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
 .mainLinks {
-    color: rgb(0, 0, 0);
-    font-size: 18px;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:visited {
     text-decoration: none;
-    font-weight: bold;
-  
-    &:visited {
-      text-decoration: none;
-    }
-  
-    &:hover {
-      text-decoration: none;
-      opacity: 0.8;
-    }
-    &:active {
-      text-decoration: none;
-    }
   }
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.8;
+  }
+  &:active {
+    text-decoration: none;
+  }
+}
