@@ -14,6 +14,7 @@
         @include button();
       }
     }
+    font-weight: bold;
   }
   .priceBox{
     display: flex;
@@ -23,7 +24,7 @@
   .primaryButton {
     margin-top: 5vh;
     width: 50%;
-    height: 5vh;
+    height: 8vh;
     @include button();
     background: #2a2f58;
 }
