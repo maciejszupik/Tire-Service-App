@@ -3,6 +3,15 @@ import Select from "react-select";
 import { options1, options2 } from "./data/data";
 import DatePicker from "./DatePicker";
 import Ready from "./Ready";
+import {
+  Link,
+  DirectLink,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller
+} from "react-scroll";
 
 class Form extends Component {
   state = {
@@ -18,7 +27,7 @@ class Form extends Component {
     showDateForm: false,
     selectedDate: "",
     summaryWindow: false,
-    date: ''
+    date: ""
   };
 
   handleChange = selectedOption => {
@@ -87,17 +96,17 @@ class Form extends Component {
       showDateForm: true
     });
   };
-  handleOnValueChange = (val) => {
+  handleOnValueChange = val => {
     this.setState({
       date: val
-    })
-  }
-  setAppointment = (e) => {
-    e.preventDefault()
+    });
+  };
+  setAppointment = e => {
+    e.preventDefault();
     this.setState({
       summaryWindow: true
     });
-    };
+  };
   render() {
     const { selectedOption, selectedOption2, showDateForm, date } = this.state;
     return (
@@ -143,20 +152,27 @@ class Form extends Component {
         ) : (
           ""
         )}
-        {date? (
+        {date ? (
           <h3>
-        <button className="primaryButton" onClick={this.setAppointment}>
-        NEXT
-        </button>
-        </h3>): ""}
+            <Link to="test1" smooth={true} offset={50} duration={500}>
+              <button className="primaryButton" onClick={this.setAppointment}>
+                NEXT
+              </button>
+            </Link>
+          </h3>
+        ) : (
+          ""
+        )}
         {this.state.summaryWindow ? (
-          <Ready
-            price={this.state.price}
-            extraPrice={this.state.extraPrice}
-            selectedOption={selectedOption}
-            selectedOption2={selectedOption2}
-            date={date}
-          />
+          <Element name="test1" className="element">
+            <Ready
+              price={this.state.price}
+              extraPrice={this.state.extraPrice}
+              selectedOption={selectedOption}
+              selectedOption2={selectedOption2}
+              date={date}
+            />
+          </Element>
         ) : (
           ""
         )}

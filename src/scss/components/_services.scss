@@ -1,6 +1,6 @@
-@import 'config/variables';
+@import "config/variables";
 
-.containerBox{
+.containerBox {
   @include container();
   display: flex;
 }
@@ -22,7 +22,7 @@
     @include button();
     width: 80%;
     margin-right: 20%;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
   }
 }
 .popUpMenu {

@@ -1,10 +1,21 @@
 @import 'config/variables';
 
+.readyStyle{
+    width: 100%;
+      margin: 0 auto;
+      background-color: #78abec;
+      opacity: 0.9;
+}
 .appointmentInfo{
     margin-top: 5vh;
+    
     padding-left: 10vh;
+    padding-right: 10vh;
     display:flex;
     flex-direction: column;
-    color: white;       
+    color: rgb(255, 255, 255);       
 }
-   
+
+#filled-number{
+    background-color: rgb(177, 221, 238);
+}

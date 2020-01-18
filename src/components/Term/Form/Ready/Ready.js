@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
 const MENU_URL = "http://localhost:3001/term";
+
 
 const months = [
   "January",
@@ -22,18 +26,12 @@ class Ready extends Component {
     price: this.props.price + this.props.extraPrice,
     data: this.props.date,
     service: this.props.selectedOption.value,
-    size: this.props.selectedOption2.value
+    size: this.props.selectedOption2.value,
+    number: {
+      value: '',
+      error: false
+    }
   };
-
-  get styles() {
-    return {
-      width: "100%",
-      margin: "0 auto",
-      height: "100vh",
-      backgroundColor: "#3f8aec",
-      opacity: 0.9
-    };
-  }
 
   componentDidMount() {
     fetch(MENU_URL)
@@ -46,7 +44,7 @@ class Ready extends Component {
       .then(items => this.setState({ items }));
   }
   onClick = e => {
-    const { price, data, service, size } = this.state;
+    const { price, data, service, size, number } = this.state;
     fetch("http://localhost:3001/term", {
       method: "POST",
       headers: {
@@ -56,10 +54,29 @@ class Ready extends Component {
         price,
         data,
         service,
-        size
+        size,
+        number: number.value
       })
     });
   };
+  handleOnChange = (e) => {
+    if (e.target.value.length !== 9) {
+        this.setState({
+          number: {
+            value: e.target.value,
+            error: "9 characters required"
+          }
+        })
+      } else {
+this.setState({
+      number: {
+        value: e.target.value,
+        error: false
+      }
+      })
+    console.log(this.state.number)
+  }
+  }
   render() {
     const {
       price,
@@ -69,7 +86,7 @@ class Ready extends Component {
       date
     } = this.props;
     return (
-      <div style={this.styles}>
+      <div className='readyStyle'>
         <div className="appointmentInfo">
           <h1> YOUR APPOINTMENT INFO </h1>
           <h2>
@@ -93,7 +110,22 @@ class Ready extends Component {
               ? `0${date.getMinutes()}`
               : `${date.getMinutes()}`}{" "}
           </h2>
-        </div>
+          <h2>
+          PHONE NUMBER:
+        </h2>
+         
+          <TextField
+          value={this.state.number.value}
+          id="filled-number"
+          label="Number"
+          type="number"
+          error={!!this.state.number.error}
+          onChange={this.handleOnChange}
+          helperText={this.state.number.error}
+          variant="filled"
+        />
+        </div>   
+        
         <h3>
           <NavLink to="/#" className="mainLinks">
             <button className="primaryButton" onClick={this.onClick}>

@@ -13,7 +13,7 @@ class Home extends Component {
           <h2>TIRES SWAP</h2>
           <h2>WHEELS SWAP</h2>
           <h2>TIRE STORAGE FOR SEASON</h2>
-          <Popup trigger={<button>PRICES</button>} position="bottom center">
+          <Popup trigger={<button>PRICES</button>} position="right center">
             <div className="popUpMenu">
               <h3>TIRE SWAP</h3>
               <ul>
@@ -35,7 +35,7 @@ class Home extends Component {
               </ul>
             </div>
           </Popup>
-          <Popup trigger={<button>EXTRA SERVICES</button>} position="bottom center">
+          <Popup trigger={<button>EXTRA SERVICES</button>} position="right center">
             <div className="popUpMenu">
               <ul>
                 <li>TIRE STORAGE FOR SEASON -> 100 PLN</li>
