@@ -32,6 +32,10 @@ class Ready extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo({
+      top: 1000,
+      behavior: 'smooth',
+    });
     fetch(MENU_URL)
       .then(res => {
         if (res.ok) {
@@ -66,6 +70,10 @@ class Ready extends Component {
         }
       });
     } else {
+      window.scrollTo({
+        top: 1200,
+        behavior: 'smooth',
+      });
       this.setState({
         number: {
           value: e.target.value,

@@ -3,7 +3,6 @@ import Select from "react-select";
 import { options1, options2 } from "./data/data";
 import DatePicker from "./DatePicker";
 import Ready from "./Ready";
-import { Link, Element } from "react-scroll";
 
 class Form extends Component {
   state = {
@@ -35,6 +34,10 @@ class Form extends Component {
 
   handleOnClick = e => {
     e.preventDefault();
+    window.scrollTo({
+      top: 690,
+      behavior: "smooth"
+    });
     if (this.state.selectedOption && this.state.selectedOption2) {
       this.setState({
         price: (this.state.price +=
@@ -122,11 +125,13 @@ class Form extends Component {
           <button onClick={this.handleClick4}>SENSORS PROGRAMMING + 50</button>
           <button onClick={this.handleClick5}>TIRE BAGS + 10</button>
         </div>
+        <div style={{ height: 40 }}></div>
         <div className="priceBox">
           <button className="primaryButton" onClick={this.handleOnClick}>
             CHECK PRICE:
           </button>
         </div>
+        <div style={{ height: 20 }}></div>
         <h3>{this.state.message}</h3>
         <h3>
           {this.state.message.length > 16 ? (
@@ -146,25 +151,21 @@ class Form extends Component {
         )}
         {date ? (
           <h3>
-            <Link to="test1" smooth={true} offset={50} duration={500}>
-              <button className="primaryButton" onClick={this.setAppointment}>
-                NEXT
-              </button>
-            </Link>
+            <button className="primaryButton" onClick={this.setAppointment}>
+              NEXT
+            </button>
           </h3>
         ) : (
           ""
         )}
         {this.state.summaryWindow ? (
-          <Element name="test1" className="element">
-            <Ready
-              price={this.state.price}
-              extraPrice={this.state.extraPrice}
-              selectedOption={selectedOption}
-              selectedOption2={selectedOption2}
-              date={date}
-            />
-          </Element>
+          <Ready
+            price={this.state.price}
+            extraPrice={this.state.extraPrice}
+            selectedOption={selectedOption}
+            selectedOption2={selectedOption2}
+            date={date}
+          />
         ) : (
           ""
         )}
