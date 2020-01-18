@@ -15,6 +15,7 @@ class Contact extends Component {
                 <h2>KRAKÓW RYNEK GŁÓWNY 3</h2>
                 <h2>MOBILE: +48 797 979 123</h2>
                 <Map />
+                <div style={{ height: 100 }}></div>
             </div>
         );
     }
