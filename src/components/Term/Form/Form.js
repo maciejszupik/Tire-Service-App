@@ -3,15 +3,7 @@ import Select from "react-select";
 import { options1, options2 } from "./data/data";
 import DatePicker from "./DatePicker";
 import Ready from "./Ready";
-import {
-  Link,
-  DirectLink,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller
-} from "react-scroll";
+import { Link, Element } from "react-scroll";
 
 class Form extends Component {
   state = {
